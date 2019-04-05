@@ -29,7 +29,7 @@ console.log(out2);
 
 
 let c: number = 123;
-let credits: number = 100; //100
+let credits: number = 100;
 let isBonus: boolean = false;
 // if credits are at least 50,
 // and is_bonus is false decrement c by 2
@@ -48,8 +48,8 @@ console.log(c);
 
 
 
-let d: number =  9; //8
-let time: number = 120; //120
+let d: number =  8; 
+let time: number = 120;
 let out3: string = '';
 // if d is dividable by 4
 // and time is not more than 200
