@@ -4,7 +4,7 @@
 
 function xToY(myString:string):string {
     if(myString.indexOf("x") === -1) return myString;
-    return xToY(myString.replace("x", "X"));
+    return xToY(myString.replace("x", "Y"));
 }
 console.log(xToY("xAdXsdx"));
 
