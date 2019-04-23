@@ -1,7 +1,5 @@
 'use strict';
 
-//import { Person } from './Person';
-
 class Tree {
   waterAmount:number;
   canAbsorb:number;

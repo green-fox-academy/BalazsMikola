@@ -1,7 +1,5 @@
 'use strict';
 
-//import { Person } from './Person';
-
 class Flower {
   waterAmount:number;
   canAbsorb:number;
@@ -16,8 +14,5 @@ class Flower {
   };
 
 }
-/*
-let a:Flower = new Flower('yellow');
-console.log(a);
-*/
+
 export { Flower };
