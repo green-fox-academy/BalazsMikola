@@ -1,8 +1,8 @@
 'use strict';
 
 export class Animal{
-  protected animalType:string;
-  protected hunger:number;
+  public animalType:string;
+  public hunger:number;
   protected thirst:number;
 
   constructor(animalType:string, hunger:number = 50, thirst:number = 50){
