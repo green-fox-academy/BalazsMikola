@@ -2,7 +2,7 @@
 
 import { BlogPost } from "./BlogPost";
 
-class Blog {
+export class Blog {
   listOfPosts:BlogPost[] = [];
 
   addNewPost(authorName:string, title:string, text:string, publicationDate:string):void{
@@ -12,6 +12,7 @@ class Blog {
   deletePost(index:number):string{
     if(index <= this.listOfPosts.length-1){
       this.listOfPosts.splice(index, 1);
+      return `Post deleted`;
     }else return `Can not find post with this index: ${index}`;
   };
 
@@ -23,5 +24,4 @@ class Blog {
       this.listOfPosts[index].title = newPost.title;
     }else return `Can not find post with this index: ${index}`;
   };
-
 };
