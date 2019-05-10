@@ -3,7 +3,7 @@
 import { Animal } from "./Animal";
 
 export class Farm{
-  protected listOfAnimals:Animal[] = [];
+  public listOfAnimals:Animal[] = [];
   protected slotsForAnimals:number;
 
   constructor(slotsForAnimals:number = 10){
@@ -12,19 +12,19 @@ export class Farm{
 
   breed(type:string):string{
     if(this.slotsForAnimals > 0){
-      this.listOfAnimals.push(new Animal(type))
+      this.listOfAnimals.push(new Animal(type));
+      this.slotsForAnimals--;
     }else return 'No more space for new aminal!';
   };
 
-  slaughter():void{
-    console.log(this.listOfAnimals);
+  slaughter():string{
     let howHungry:number[] = [];
     for(let i:number=0; i<this.listOfAnimals.length; i++){
       howHungry.push(this.listOfAnimals[i].hunger);
     };
+    let aminalToKill:string = `Your ${this.listOfAnimals[howHungry.indexOf(Math.max(...howHungry))].animalType} was fat so we did slaughter and cook it!`;
     this.listOfAnimals.splice(howHungry.indexOf(Math.max(...howHungry)),1);
-    console.log(this.listOfAnimals);
-    
-    //howHungry.indexOf(Math.max(...howHungry))   
+    this.slotsForAnimals++;
+    return aminalToKill;
   };
 };
