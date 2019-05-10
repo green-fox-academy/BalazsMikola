@@ -1,10 +1,9 @@
-
 'use strict';
 
-class Animal{
-  animalType:string;
-  hunger:number;
-  thirst:number;
+export class Animal{
+  protected animalType:string;
+  protected hunger:number;
+  protected thirst:number;
 
   constructor(animalType:string, hunger:number = 50, thirst:number = 50){
     this.animalType = animalType;
@@ -12,26 +11,19 @@ class Animal{
     this.thirst = thirst;
   };
 
-  eat(){
+  eat():void{
     this.hunger--;
     console.log(`Your animal did eat so the hunger now is ${this.hunger}`);
   };
 
-  drink(){
+  drink():void{
     this.thirst--;
     console.log(`Your animal did drink so the thirst now is ${this.hunger}`);
   };
 
-  play(){
+  play():void{
     this.hunger++;
     this.thirst++;
     console.log(`Your animal did play so the hunger and the thirst now is ${this.hunger}, ${this.thirst}`);
   };
 };
-/*
-const myAnimal:Animal = new Animal('sheep');
-myAnimal.eat();
-myAnimal.drink();
-myAnimal.play();
-console.log(myAnimal);
-*/
