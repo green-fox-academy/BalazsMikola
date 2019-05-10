@@ -22,8 +22,8 @@ export class Farm{
     for(let i:number=0; i<this.listOfAnimals.length; i++){
       howHungry.push(this.listOfAnimals[i].hunger);
     };
-    let aminalToKill:string = `Your ${this.listOfAnimals[howHungry.indexOf(Math.max(...howHungry))].animalType} was fat so we did slaughter and cook it!`;
-    this.listOfAnimals.splice(howHungry.indexOf(Math.max(...howHungry)),1);
+    let aminalToKill:string = `Your ${this.listOfAnimals[howHungry.indexOf(Math.min(...howHungry))].animalType} was fat so we did slaughter and cook it!`;
+    this.listOfAnimals.splice(howHungry.indexOf(Math.min(...howHungry)),1);
     this.slotsForAnimals++;
     return aminalToKill;
   };
