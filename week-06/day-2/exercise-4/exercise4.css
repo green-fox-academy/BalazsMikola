@@ -1,0 +1,49 @@
+
+.wrapper{
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+header{
+  height: 50px;
+  width: 100%;
+  background-color: purple;
+  display: flex;
+}
+
+ul{
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  width: 60px;
+  height: 25px;
+  background-color: cyan;
+  display: block;
+  margin-left: 15px;
+}
+
+.mainFrame{
+  display: flex;
+  height: 550px;
+  width: 100%;
+}
+
+.main{
+  height: 100%;
+}
+
+.content{
+  flex-grow: 2;
+  background-color: yellow;
+}
+
+.sidebar{
+  flex-grow: 1;
+  background-color: green;
+}
