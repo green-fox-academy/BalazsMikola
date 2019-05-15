@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: CreateElement</title>
+  </head>
+  <body>
+    <ul class="asteroids">
+      <li id="b325" class="asteroid">The King</li>
+      <li class="asteroid b326">The Conceited Man</li>
+    </ul>
+    <div class="container"></div>
+    
+    <script>
+      'use strict';
+
+      document.querySelector('.asteroids').appendChild(document.createElement('li')).innerText = 'The Green Fox';
+      document.querySelector('.asteroids').appendChild(document.createElement('li')).innerText = 'The Lamplighter';
+      document.querySelector('body').appendChild(document.createElement('h1')).innerText = 'I can add elements to the DOM!';
+      document.querySelector('body').appendChild(document.createElement('img')).setAttribute('src','https://edenmitsenmacher.files.wordpress.com/2014/07/picasion-com_14b818f4fb116e0d97f3a70dd882e6a2.gif');
+ 
+    </script>
+  </body>
+</html>
