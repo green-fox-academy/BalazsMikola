@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: CreateElement</title>
+    <style>
+      div#pets {
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pets"></div>
+    
+    <script>
+      'use strict';
+      const kids = [
+        { 'petName': 'Wattled crane', 'owner': 'Bryant' },
+        { 'petName': 'Devil, tasmanian', 'owner': 'Alejandro' },
+        { 'petName': 'Mynah, common', 'owner': 'Nelie' },
+        { 'petName': 'Dolphin, common', 'owner': 'Mariele' },
+        { 'petName': 'Gray duiker', 'owner': 'Maddalena' },
+        { 'petName': 'Crab (unidentified)', 'owner': 'Lucine' },
+        { 'petName': 'Ant (unidentified)', 'owner': 'Lorianna' },
+        { 'petName': 'Bison, american', 'owner': 'Tommie' },
+        { 'petName': 'Yellow mongoose', 'owner': 'Vivyan' },
+        { 'petName': 'Carpet snake', 'owner': 'Veda' },
+        { 'petName': 'Lesser mouse lemur', 'owner': 'Isidor' },
+      ];
+
+      for(let i=0; i<kids.length; i++){
+        let newArticle = document.createElement('article');
+        newArticle.appendChild(document.createElement('h3')).innerText = kids[i].owner;
+        newArticle.appendChild(document.createElement('p')).innerText = kids[i].petName;
+        document.getElementById('pets').appendChild(newArticle);
+      };
+      
+    </script>
+  </body>
+</html>
