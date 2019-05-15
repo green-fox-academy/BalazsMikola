@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: innerHTML, textContent</title>
+    <style>
+        .changeColor {background-color: limegreen;}
+     </style>
+  </head>
+  <body>
+    <ul>
+      <li>placeholder</li>
+      <li>placeholder</li>
+      <li>placeholder</li>
+      <li>placeholder</li>
+    </ul>
+    
+    <script>
+      'use strict';
+      
+      let list = ['apple', 'banana', 'cat', 'dog'];
+
+      for(let i=0; i<list.length; i++){
+        Array.from(document.getElementsByTagName('li'))[i].innerText = list[i];
+        Array.from(document.getElementsByTagName('li'))[i].setAttribute('class','changeColor');
+      };
+
+    </script>
+  </body>
+</html>
