@@ -17,25 +17,25 @@ function setInitial(){
   document.getElementsByTagName('h1')[0].innerText = listOfImages[0].title;
   document.getElementsByTagName('p')[0].innerText = listOfImages[0].story;
   document.body.addEventListener('keydown', onKeyPress);
+  document.getElementsByClassName('thumbnail')[0].style.borderColor = "grey";
 };
 
-function changeMainImgae(index){
+function changeMainImage(index){
   document.getElementsByClassName('content')[0].style.backgroundImage = 'url(assets/'+listOfImages[index].name+')';
   document.getElementsByTagName('h1')[0].innerText = listOfImages[index].title;
   document.getElementsByTagName('p')[0].innerText = listOfImages[index].story;
-};
-
-function highlightMiniImage(){
   let thumbnails = document.getElementsByClassName('thumbnail');
   for(let i=0; i<listOfImages.length; i++){
     i===actualImageIndex ? thumbnails[i].style.borderColor = "grey" : thumbnails[i].style.borderColor = "white";
   };
 };
 
+function highlightMiniImage(){
+};
+
 function selectMiniImage(index){
-  changeMainImgae(index);
   actualImageIndex = index;
-  highlightMiniImage();
+  changeMainImage(index);
 };
 
 function showImagesInThumbnails(images){
@@ -49,14 +49,12 @@ function slide(direction){
   if(direction === 'right'){
     actualImageIndex ++;
     if(actualImageIndex > listOfImages.length-1) actualImageIndex = 0;
-    changeMainImgae(actualImageIndex);
-    highlightMiniImage(actualImageIndex);
+    changeMainImage(actualImageIndex);
   };
   if(direction === 'left'){
     actualImageIndex --;
     if(actualImageIndex < 0) actualImageIndex = listOfImages.length-1;
-    changeMainImgae(actualImageIndex);
-    highlightMiniImage(actualImageIndex);
+    changeMainImage(actualImageIndex);
   };
   console.log(actualImageIndex);
 };
