@@ -30,9 +30,6 @@ function changeMainImage(index){
   };
 };
 
-function highlightMiniImage(){
-};
-
 function selectMiniImage(index){
   actualImageIndex = index;
   changeMainImage(index);
@@ -56,7 +53,6 @@ function slide(direction){
     if(actualImageIndex < 0) actualImageIndex = listOfImages.length-1;
     changeMainImage(actualImageIndex);
   };
-  console.log(actualImageIndex);
 };
 
 function onKeyPress(event) {
@@ -69,4 +65,3 @@ function onKeyPress(event) {
 
 setInitial();
 showImagesInThumbnails(listOfImages);
-highlightMiniImage(actualImageIndex);
