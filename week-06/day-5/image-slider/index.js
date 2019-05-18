@@ -13,50 +13,53 @@ const listOfImages = [
 
 let actualImageIndex = 0;
 
-document.getElementsByTagName('h1')[0].innerText = listOfImages[0].title;
-document.getElementsByTagName('p')[0].innerText = listOfImages[0].story;
+function setInitial(){
+  document.getElementsByTagName('h1')[0].innerText = listOfImages[0].title;
+  document.getElementsByTagName('p')[0].innerText = listOfImages[0].story;
+};
 
-function highlightMiniImage(index){
+function changeMainImgae(index){
+  document.getElementsByClassName('content')[0].style.backgroundImage = 'url(assets/'+listOfImages[index].name+')';
+  document.getElementsByTagName('h1')[0].innerText = listOfImages[index].title;
+  document.getElementsByTagName('p')[0].innerText = listOfImages[index].story;
+};
+
+function highlightMiniImage(){
   let thumbnails = document.getElementsByClassName('thumbnail');
   for(let i=0; i<listOfImages.length; i++){
-    i===index ? thumbnails[i].style.borderColor = "grey" : thumbnails[i].style.borderColor = "white";
+    i===actualImageIndex ? thumbnails[i].style.borderColor = "grey" : thumbnails[i].style.borderColor = "white";
   };
 };
 
 function selectMiniImage(index){
-  document.getElementsByClassName('content')[0].style.backgroundImage = 'url(assets/'+listOfImages[index].name+')';
-  document.getElementsByTagName('h1')[0].innerText = listOfImages[index].title;
-  document.getElementsByTagName('p')[0].innerText = listOfImages[index].story;
+  changeMainImgae(index);
   actualImageIndex = index;
-  highlightMiniImage(index);
+  highlightMiniImage();
 };
 
 function showImagesInThumbnails(images){
   let thumbnails = document.getElementsByClassName('thumbnail');
   for(let i=0; i<images.length; i++){
     thumbnails[i].style.backgroundImage = 'url(assets/'+listOfImages[i].name+')';
-  };
+  };  
 };
 
 function slide(direction){
   if(direction === 'right'){
     actualImageIndex ++;
     if(actualImageIndex > listOfImages.length-1) actualImageIndex = 0;
-    document.getElementsByClassName('content')[0].style.backgroundImage = 'url(assets/'+listOfImages[actualImageIndex].name+')';
-    document.getElementsByTagName('h1')[0].innerText = listOfImages[actualImageIndex].title;
-    document.getElementsByTagName('p')[0].innerText = listOfImages[actualImageIndex].story;
+    changeMainImgae(actualImageIndex);
     highlightMiniImage(actualImageIndex);
   };
   if(direction === 'left'){
     actualImageIndex --;
     if(actualImageIndex < 0) actualImageIndex = listOfImages.length-1;
-    document.getElementsByClassName('content')[0].style.backgroundImage = 'url(assets/'+listOfImages[actualImageIndex].name+')';
-    document.getElementsByTagName('h1')[0].innerText = listOfImages[actualImageIndex].title;
-    document.getElementsByTagName('p')[0].innerText = listOfImages[actualImageIndex].story;
+    changeMainImgae(actualImageIndex);
     highlightMiniImage(actualImageIndex);
   };
   console.log(actualImageIndex);
 };
 
+setInitial();
 showImagesInThumbnails(listOfImages);
 highlightMiniImage(actualImageIndex);
