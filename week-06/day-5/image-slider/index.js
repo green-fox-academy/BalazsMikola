@@ -16,6 +16,7 @@ let actualImageIndex = 0;
 function setInitial(){
   document.getElementsByTagName('h1')[0].innerText = listOfImages[0].title;
   document.getElementsByTagName('p')[0].innerText = listOfImages[0].story;
+  document.body.addEventListener('keydown', onKeyPress);
 };
 
 function changeMainImgae(index){
@@ -58,6 +59,14 @@ function slide(direction){
     highlightMiniImage(actualImageIndex);
   };
   console.log(actualImageIndex);
+};
+
+function onKeyPress(event) {
+  switch (event.keyCode)
+  {
+    case 37: slide('left'); break;
+    case 39: slide('right'); break;
+  };
 };
 
 setInitial();
