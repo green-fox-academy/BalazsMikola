@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.wrapper{
+  width: 650px;
+}
+
+ul{
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+li{
+  display: block;
+  margin-right: 10px;
+}
+
+a{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: larger;
+}
+
+table{
+  width: 100%;
+  border: 1px solid black;
+}
+
+thead > tr {
+  background-color: black;
+  color: white;
+  height: 60px;
+  font-size: 25px;
+}
+
+td{
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.price{
+  width: 25%;
+  text-align: center;
+}
+
+p, span{
+  font-weight: normal;
+  font-size: smaller;
+}
+
+tbody > tr:nth-last-child(odd) {
+  background-color: lightgray;
+}
