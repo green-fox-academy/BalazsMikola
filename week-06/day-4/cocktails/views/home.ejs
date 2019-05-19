@@ -22,7 +22,11 @@
         <tr><th>NAME</th><th>PRICE</th></tr>
       </thead>
         <tbody>
-        
+          <% for(let i=0; i<cocktails.length; i++){ %>
+              <% let nonAlcoholic = ''; %>
+               <% if(cocktails[i].isAlcoholic === false){ nonAlcoholic = '(non-alcoholic)'; } %>
+            <tr><td><%= cocktails[i].name %><span><%= nonAlcoholic %></span></td><td><%= cocktails[i].price %></td></tr>
+          <% } %>
         </tbody>
     </table>
   </div>
