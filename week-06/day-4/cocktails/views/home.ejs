@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <title>Cocktails</title>
 </head>
 <body>
@@ -24,9 +25,9 @@
         <tbody>
           <% for(let i=0; i<cocktails.length; i++){ %>
               <% let nonAlcoholic = ''; %>
-               <% if(cocktails[i].isAlcoholic === false){ nonAlcoholic = '(non-alcoholic)'; } %>
-            <tr><td><%= cocktails[i].name %><span><%= nonAlcoholic %></span></td><td><%= cocktails[i].price %></td></tr>
-          <% } %>
+               <% if(cocktails[i].isAlcoholic === false){ nonAlcoholic = ' (non-alcoholic)'; } %>
+            <tr><td><%= cocktails[i].name %><span><%= nonAlcoholic %></span><p><%= cocktails[i].contains %></p></td><td class="price"><%= cocktails[i].price %> Ft</td></tr>
+          <% ;} %>
         </tbody>
     </table>
   </div>
