@@ -24,13 +24,13 @@ app.get('/', (req, res) => {
 
   let request = req.query.alcohol
   if(!request){
-    res.render('home', {cocktails:cocktails});
+    res.render('home', {cocktails:cocktails, alcoholList:alcoholList});
   }else{
     let selectedList = [];
     for(let i=0; i<cocktails.length; i++){
       if(cocktails[i].contains.indexOf(request) != -1) selectedList.push(cocktails[i]);
     };
-    res.render('home', {cocktails:selectedList});
+    res.render('home', {cocktails:selectedList, alcoholList:alcoholList});
   };
   
 });
