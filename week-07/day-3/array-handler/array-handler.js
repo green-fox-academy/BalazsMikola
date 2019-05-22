@@ -9,14 +9,16 @@ app.post('/arrays', (req, res) => {
   let math = req.body.what;
   let numbers = req.body.numbers;
   let result;
-  if(math === 'sum'){
-    result = numbers.reduce((partial_sum, element) => partial_sum + element,0);
-  }else if(math === 'multiply'){
-    result = numbers.reduce((partial_sum, element) => partial_sum * element,1);
-  }else if(math === 'double'){
-    result = numbers.map(element => element*2);
-  };
-  res.send({'result':result});
+  if(math && numbers){
+    if(math === 'sum'){
+      result = numbers.reduce((partial_sum, element) => partial_sum + element,0);
+    }else if(math === 'multiply'){
+      result = numbers.reduce((partial_sum, element) => partial_sum * element,1);
+    }else if(math === 'double'){
+      result = numbers.map(element => element*2);
+    };
+    res.send({'result':result});
+  }else res.send({'error':"Please provide what to do with the numbers!"});
 
 });
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}`));
