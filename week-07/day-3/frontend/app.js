@@ -34,4 +34,14 @@ app.get('/greeter', (req, res) => {
   res.send(answer);
 });
 
+app.get('/appenda/:word', (req, res) => {
+  let appendable = req.params.word
+  let answer = {};
+  
+  if(appendable){
+    answer.appended = appendable + 'a';
+    res.send(answer);
+  }else res.status(404).send();
+});
+
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}`));
