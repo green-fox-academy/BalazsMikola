@@ -6,6 +6,7 @@ const PORT = 8080;
 const path = require('path');
 
 app.use(express.static('assets'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -42,6 +43,22 @@ app.get('/appenda/:word', (req, res) => {
     answer.appended = appendable + 'a';
     res.send(answer);
   }else res.status(404).send();
+});
+
+app.post('/dountil/:action', (req, res) => {
+  let result = 0;
+  if(!req.body.until) res.send({'error': 'Please provide a number!'});
+  if(req.params.action === 'sum'){
+    for(let i=0; i<=req.body.until; i++){
+      result += i;
+    };
+  }else if(req.params.action === 'factor'){
+    result = 1;
+    for(let i=1; i<=req.body.until; i++){
+      result *= i;
+    };
+  };
+  res.send({'result':result});
 });
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}`));
