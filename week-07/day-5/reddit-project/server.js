@@ -30,16 +30,26 @@ app.post('/posts', (req, res) => {
     if (err || result.length===0) {
       res.json({'error':'Please log-in or sing-up'})
       return;
-    }else {
-      conn.query(`INSERT INTO posts (title, url, owner) VALUES (?, ?, ?)`, [req.body.title, req.body.url, user]); (err, result) => {
+    }else{
+      conn.query(`INSERT INTO posts (title, url, owner) VALUES (?, ?, ?);`, [req.body.title, req.body.url, user], (err, result) => {
         if (err) {
           res.json(err.toString());
           return;
+        }else{
+            conn.query(`SELECT * FROM posts WHERE owner = "${user}" AND id=(SELECT max(id) FROM posts)`, (err, result) => {
+            if (err) {
+              res.json(err.toString());
+              return;
+            }else{
+              res.json(result);
+              return;
+            };
+          });
         };
-      };
-      res.status(200).send('OK');
+      });
     };
     console.log('data successfully requested from DB');
+    return;
   });
 });
 
@@ -50,7 +60,29 @@ app.get('/posts', (req, res) => {
       res.json(err.toString());
       return;
     }else {
+      //res.status(200).send('OK!');
       res.json(result);
+    };
+  });
+});
+
+app.delete('/posts', (req, res) => {
+  
+  let id = req.query.id;
+
+  conn.query(`SELECT * FROM posts WHERE id = ${id}`, (err, result) => {
+    if (err) {
+      res.json(err.toString());
+      return;
+    }else { 
+      conn.query(`DELETE FROM posts WHERE id = ${id}`, (err, result2) => {
+      if (err) {
+        res.json(err.toString());
+        return;
+      }else {
+        res.json(result);
+      }
+      });
     };
   });
 });
