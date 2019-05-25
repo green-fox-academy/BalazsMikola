@@ -87,4 +87,25 @@ app.delete('/posts', (req, res) => {
   });
 });
 
+app.put('/posts', (req, res) => {
+  
+  let id = req.query.id;
+
+  conn.query(`UPDATE posts SET title = "${req.body.title}", url = "${req.body.url}" WHERE id = ${id}`, (err, result) => {
+    if (err) {
+      res.json(err.toString());
+      return;
+    }else { 
+      conn.query(`SELECT * FROM posts WHERE id = ${id}`, (err, result) => {
+      if (err) {
+        res.json(err.toString());
+        return;
+      }else {
+        res.json(result);
+      }
+      });
+    };
+  });
+});
+
 app.listen(PORT, () => {console.log(`Server is up and running on port ${PORT} 🔥`);});
