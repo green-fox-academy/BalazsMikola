@@ -108,4 +108,62 @@ app.put('/posts', (req, res) => {
   });
 });
 
+app.put('/posts/:id/:vote', (req, res) => {
+
+  let id = req.params.id
+  let vote = req.params.vote === 'upvote'? 1 : -1; 
+  let user = req.body.user;
+  
+  conn.query(`SELECT name FROM users WHERE name = "${user}";`, (err, result) => {
+    if (err || result.length===0) {
+      res.json({'error':'Please log-in or sing-up'})
+      return;
+    }else{
+      conn.query(`SELECT users.id, postID FROM users JOIN votes ON users.id = votes.userID WHERE name = "${user}"  && postID = "${id}";`, (err, result) => {
+        if (err) {
+          res.json(err);
+          return;
+        }else if(result.length===0){
+          conn.query(`SELECT id FROM users WHERE name = "${user}";`, (err, result) => {
+            if (err) {
+              res.json(err);
+              return;
+            }else{
+              let userID = result[0].id;
+              conn.query(`INSERT INTO votes (userID, postID, vote) VALUES (?, ?, ?);`, [userID, id, vote], (err, result) => {
+                if (err) {
+                  res.json(err);
+                  return;
+                }else{
+                  conn.query(`SELECT score FROM posts WHERE id = "${id}";`, (err, result) => {
+                    if (err) {
+                      res.json(err);
+                      return;
+                    }else{
+                      let actualScore = result[0].score;
+                      actualScore += vote;
+                      conn.query(`UPDATE posts SET score = "${actualScore}" WHERE id = ${id}`, (err, result) => {
+                        if (err) {
+                          res.json(err);
+                          return;
+                        }else{
+                          res.json({'voted':'thanks for your vote'});
+                        };
+                      });
+                    };
+                  });
+                };
+              });
+            };
+          });
+        }else if(result.length!=0){
+          res.json({'error':'you already voted on this post!'});
+        };
+      });
+      
+    };
+
+  });
+});
+
 app.listen(PORT, () => {console.log(`Server is up and running on port ${PORT} 🔥`);});
