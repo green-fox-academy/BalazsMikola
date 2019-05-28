@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: EventListeners</title>
+  </head>
+  <body>
+    <button>First way</button>
+    <button>Second way</button>
+
+
+    <script>
+      
+      const button1 = document.querySelectorAll('button')[0];
+      const button2 = document.querySelectorAll('button')[1];
+      let clicked = false;
+
+      const showTimeStampOnceWayOne = () => {
+        console.log(new Date().getTime());
+        button1.disabled = true;
+      };
+
+      const showTimeStampOnceWayTwo = () => {
+        if(!clicked){
+          console.log(new Date().getTime());
+          clicked = true;
+        };
+      };
+      button1.addEventListener('click', showTimeStampOnceWayOne);
+      button2.addEventListener('click', showTimeStampOnceWayTwo);
+    </script>
+
+  </body>
+</html>
