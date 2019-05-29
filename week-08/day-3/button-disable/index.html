@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>button-disable</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="frame">
+    <div class="wrapper">
+      <h3>What is your favourite pet?</h3><br>
+      <form action="/login" method="POST">
+        <input type="radio" name="animal" value="dog" id="dog"/>
+        <label for="dog">Dog</label><br>
+        <input type="radio" name="animal" value="cat" id="cat"/>
+        <label for="cat">Cat</label><br>
+        <input type="radio" name="animal" value="viktor" id="viktor"/>
+        <label for="viktor">Viktor the goldfish</label><br><br>
+
+        <h3>Do you want to sign up for cat facts?</h3><br>
+        <input type="radio" name="facts" value="yes" id="yes"/>
+        <label for="yes">Yes</label><br>
+        <input type="radio" name="facts" value="no" id="no"/>
+        <label for="no">No</label><br>
+
+        <input type="button" value="I love cats" class="submitButton" disabled="true"/>
+        <input type="button" value="Sign up" class="submitButton" disabled="true"/>
+      </form>
+    </div>
+  </div>
+  <script>
+    'use strict';
+
+    const action = () => {
+      console.log(Array.from(document.querySelector('form').getElementsByTagName('input')));
+      let inputs = Array.from(document.querySelector('form').getElementsByTagName('input'))
+      if(inputs[0].checked === true || inputs[1].checked === true){
+        inputs[6].disabled = false;
+      };
+      if(inputs[3].checked === true) inputs[5].disabled = false;
+    };
+    document.querySelector('form').addEventListener('click', action);
+
+    const singUp = () => alert(`Thank you, you've successfully signed up for cat facts`);
+    document.getElementsByClassName('submitButton')[0].addEventListener('click', singUp);
+    document.getElementsByClassName('submitButton')[1].addEventListener('click', singUp);
+
+  </script>
+</body>
+</html>
