@@ -12,9 +12,10 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .frame{
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -22,14 +23,17 @@ body{
 }
 
 .wrapper{
-  width: 450px;
-  height: 450px;
+  width: 350px;
+  height: 350px;
   background-color: white;
 }
 
 img{
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top:-45px;
+  left:90%;
 }
 
 input{
@@ -37,5 +41,22 @@ input{
 }
 
 input[type="text"], [type="password"] {
-  width: 80%;
+  width: 95%;
+  margin-top: 4px;
+  margin-bottom: 15px;
+}
+
+input[type="submit"] {
+  color: white;
+  background-color: black;
+  border: none;
+  margin-top: 30px;
+  width:100px;
+  border-radius: 20px;
+}
+
+a {
+  float: right;
+  text-decoration: none;
+  color: black;
 }
