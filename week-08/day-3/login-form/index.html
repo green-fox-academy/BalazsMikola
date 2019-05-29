@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="frame">
+    <div class="wrapper">
+      <h1>ACCOUNT LOGIN</h1><br>
+      <form action="/login" method="POST">
+        <label for="username" autofocus>USERNAME</label><br>
+        <input type="text" id="username" name="username" required/><br>
+        <label for="password">PASSWORD</label><br>
+        <div class="passwordDiv">
+          <input type="password" id="password" name="password"/>
+          <img src="./assets/hide_password.png">
+        </div><br>
+        <a>Forgot Password?</a><br>
+        <input type="submit" value="Login"/>
+      </form>
+    </div>
+  </div>
+  <script>
+    'use strict';
+
+    const showOrHide = () => {
+      let img = document.querySelector('img');
+      let password = document.querySelector('#password');
+
+      if(img.getAttribute('src')==='./assets/hide_password.png'){
+        img.setAttribute('src', './assets/show_password.png');
+        password.setAttribute('type', 'text');
+      }else if(img.getAttribute('src')==='./assets/show_password.png'){
+        img.setAttribute('src', './assets/hide_password.png');
+        password.setAttribute('type', 'password');};
+    };
+    document.querySelector('img').addEventListener('click', showOrHide);
+
+  </script>
+</body>
+</html>
