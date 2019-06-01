@@ -90,7 +90,7 @@ app.delete('/posts', (req, res) => {
         res.json(err.toString());
         return;
       }else {
-        res.json(result);
+        res.status(200).json('post deleted');
       }
       });
     };
@@ -123,6 +123,7 @@ app.put('/posts/:id/:vote', (req, res) => {
   let id = req.params.id
   let vote = req.params.vote === 'upvote'? 1 : -1; 
   let user = req.body.user;
+  console.log(user);
   
   conn.query(`SELECT name FROM users WHERE name = "${user}";`, (err, result) => {
     if (err || result.length===0) {
@@ -157,7 +158,14 @@ app.put('/posts/:id/:vote', (req, res) => {
                           res.json(err);
                           return;
                         }else{
-                          res.json({'voted':'thanks for your vote'});
+                          //res.json({'voted':'thanks for your vote'});
+                          conn.query(`SELECT score FROM posts WHERE id = "${id}";`, (err, result) => {
+                            if (err) {
+                              res.json(err);
+                              return;
+                            }else{
+                              res.json(result);
+                            }});
                         };
                       });
                     };
