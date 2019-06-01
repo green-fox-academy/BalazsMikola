@@ -1,0 +1,15 @@
+*{
+  margin : 0;
+  padding: 0;
+}
+
+div{
+  border: 1px solid black;
+}
+
+.postContainer{
+  /* background-color: lightblue; */
+  display: flex;
+  /* flex-direction: column; */
+  /* width: 200px; */
+}
