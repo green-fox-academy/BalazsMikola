@@ -1,0 +1,4 @@
+<label>Please enter a city name</label>
+<input #inputline type="text" class="form-control" [(ngModel)]="initial">
+<button class="btn btn-primary" [disabled] = "initial === ''" (click)="askForCity(inputline.value)">Search</button> 
+
