@@ -13,11 +13,10 @@ export class WeatherTileComponent implements OnInit {
   constructor(private service : ApiService) { }
 
   ngOnInit() {
-    this.service.currentCity.subscribe((data:any) => {
-    this.weatherInfo = data;
-    if(this.weatherInfo) {
-      this.weatherInfo.temp = Math.round(this.weatherInfo.temp -273);
-    }
-    })  
+    this.service.currentCities.subscribe((data:any) => this.weatherInfo = data);  
+  }
+
+  reset(){
+    this.service.getInitialCities();
   }
 }

@@ -1,6 +1,12 @@
-<div *ngIf="weatherInfo">
- {{ weatherInfo.name }} {{weatherInfo.temp}} {{weatherInfo.country}} <img id="icon" [src]="weatherInfo.icon">
+<div *ngIf="weatherInfo" class="wrapper">
+  <div *ngFor="let city of weatherInfo" class="tile">
+    <div class="tileDivCity">{{ city.name }} <h5>{{city.country}}</h5></div>
+    <div class="tileDivTemp">{{ city.temp }}°C</div>
+    <div class="tileDivIcon"><img id="icon" [src]="city.icon"></div>
+  </div>
+  <button *ngIf="weatherInfo.length <= 1" class="btn btn-primary resetButton" (click)="reset()">Reset</button>
 </div>
+
     
  
 
