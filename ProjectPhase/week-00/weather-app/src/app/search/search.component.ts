@@ -12,7 +12,7 @@ export class SearchComponent {
 
   constructor(private service : ApiService) { }
 
-  askForCity(input:string){
-    this.service.getContacts(input);
+  getCity(input:string){
+    this.service.getOneCity(input);
   }
 }
