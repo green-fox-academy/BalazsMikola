@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: rgb(240, 240, 240);
+}
+
+.container{
+  width: 30vw;
+  margin-top: 10vh;
+}
+
+.tile {
+  background-color: white;
+  display: flex;
+  margin: 20px;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+}
+
+.searchDiv{
+  display: flex;
+}
+
+.form-control{
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  
+}
+
+.btn{
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+          
+.searchDiv, .tile, .resetButton {
+  box-shadow: 8px 8px 8px 0px rgba(181,181,181,1);
+  border-radius: 5px;
+}
+
+h5{
+  margin-top: 0;
+}
+
+.tile > div{
+  margin: 10px;
+  align-self: center;
+}
+
+.tileDivCity{
+  width: 50%;
+}
+
+.icon .tileDivTemp{
+  width: 25%;
+}
